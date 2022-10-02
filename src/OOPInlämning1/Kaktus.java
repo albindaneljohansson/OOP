@@ -3,7 +3,7 @@ package OOPInlämning1;
 public class Kaktus extends Krukväxt implements Näringslösning {
 
     protected Vätsketyp vätsketyp = Vätsketyp.MINERALVATTEN;
-    final private double vätskeMängd = 0.2;
+    final private double vätskeMängd = 0.02;
 
     public Kaktus (String namn, double längd) {
         super (namn, längd);

@@ -8,7 +8,7 @@ public class Huvudprogram {
     public static void main(String[] args) {
         Huvudprogram h1 = new Huvudprogram();
     }
-    public  Huvudprogram(){
+    public Huvudprogram(){
 
         Krukväxt Igge = new Kaktus ("Igge", 0.2);
         Krukväxt Laura = new Palm ("Laura", 5);
@@ -21,17 +21,30 @@ public class Huvudprogram {
         allaVäxter.add(Meatloaf);
         allaVäxter.add(Putte);
 
-       String VäxtSomSkaHaVätska = JOptionPane.showInputDialog("Vilken växt ska få vätska?");
-       printServering(allaVäxter, VäxtSomSkaHaVätska);
+        int i = 1;
 
+        String VäxtSomSkaHaVätska = JOptionPane.showInputDialog("Vilken växt ska få vätska?");
+
+        if (VäxtSomSkaHaVätska != null) {
+            i = printServering(allaVäxter, VäxtSomSkaHaVätska);
+        }
+
+        while (i == 0) {
+            VäxtSomSkaHaVätska = JOptionPane.showInputDialog("Greenest har ingen " +
+                    "växt vid det namnet.\n Vilken växt ska få vätska?");
+            if (VäxtSomSkaHaVätska == null) {
+                break;
+            }
+            i = printServering(allaVäxter, VäxtSomSkaHaVätska);
+        }
     }
-    public void printServering (List<Krukväxt> allaVäxter, String VäxtSomSkaHaVätska) {
+    public int printServering (List<Krukväxt> allaVäxter, String VäxtSomSkaHaVätska) {
         for (Krukväxt k : allaVäxter) {
             if (k.getNamn().equals(VäxtSomSkaHaVätska)) {
                 JOptionPane.showMessageDialog(null, k.Servering());
-                break;
-            } else if (allaVäxter.indexOf(k) == allaVäxter.size() - 1)
-                JOptionPane.showMessageDialog(null,"Greenest har ingen växt vid det namnet.");
+                return 1;
+            }
         }
+        return 0;
     }
 }
