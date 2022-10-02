@@ -2,8 +2,8 @@ package OOPInlämning1;
 
 public class KöttätandeVäxt extends Krukväxt implements Näringslösning {
 
-    protected Vätsketyp vätsketyp = Vätsketyp.PROTEINDRYCK;
-    final private double vätskeMängd = getLängd()*0.2+0.1;
+    private final Vätsketyp vätsketyp = Vätsketyp.PROTEINDRYCK;
+    private final double vätskeMängd = getLängd()*0.2+0.1;
 
     public KöttätandeVäxt (String namn, double längd) {
         super (namn, längd);

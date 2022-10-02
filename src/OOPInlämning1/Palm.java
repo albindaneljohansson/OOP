@@ -2,8 +2,8 @@ package OOPInlämning1;
 
 public class Palm extends Krukväxt implements Näringslösning {
 
-    protected Vätsketyp vätsketyp = Vätsketyp.KRANVATTEN;
-    final private double vätskeMängd = getLängd()*0.5;
+    private final Vätsketyp vätsketyp = Vätsketyp.KRANVATTEN;
+    private final double vätskeMängd = getLängd()*0.5;
 
     public Palm (String namn, double längd) {
         super (namn, längd);
