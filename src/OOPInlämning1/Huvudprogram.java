@@ -10,40 +10,30 @@ public class Huvudprogram {
     }
     public Huvudprogram(){
 
-        Krukväxt Igge = new Kaktus ("Igge", 0.2);
-        Krukväxt Laura = new Palm ("Laura", 5);
-        Krukväxt Meatloaf = new KöttätandeVäxt("Meatloaf", 0.7);
-        Krukväxt Putte = new Palm("Putte", 1);
-
-        List<Krukväxt> allaVäxter = new ArrayList();
-        allaVäxter.add(Igge);
-        allaVäxter.add(Laura);
-        allaVäxter.add(Meatloaf);
-        allaVäxter.add(Putte);
-
+        Data data = new Data();
+        List<Krukväxt> allaVäxter = data.växtLista();
+        String VäxtSomSkaHaVätska = JOptionPane.showInputDialog("Vilken växt ska få vätska?");
         int i = 1;
 
-        String VäxtSomSkaHaVätska = JOptionPane.showInputDialog("Vilken växt ska få vätska?");
-
-        if (VäxtSomSkaHaVätska != null) {
+        if (VäxtSomSkaHaVätska != null) {   // För att avbryta programmet vid cancel
             i = printServering(allaVäxter, VäxtSomSkaHaVätska);
         }
 
-        while (i == 0) {
+        while (i == 0) {                        // Loopar till ett namn som finns på listan är valt
             VäxtSomSkaHaVätska = JOptionPane.showInputDialog("Greenest har ingen " +
                     "växt vid det namnet.\n Vilken växt ska få vätska?");
             if (VäxtSomSkaHaVätska == null) {
-                break;
+                break;                             // För att avbryta programmet vid cancel
             }
             i = printServering(allaVäxter, VäxtSomSkaHaVätska);
         }
     }
     public int printServering (List<Krukväxt> allaVäxter, String VäxtSomSkaHaVätska) {
-        for (Krukväxt k : allaVäxter) {
-            if (k.getNamn().equals(VäxtSomSkaHaVätska)) {
+        for (Krukväxt k : allaVäxter) {                                          //Kollar om växten finns i listan
+            if (k.getNamn().equals(VäxtSomSkaHaVätska)) {                       //Anropar serveringsmetod om växt finns
                 JOptionPane.showMessageDialog(null, k.Servering());
                 return 1;
-            }
+            }                                                                       //Returnerar int för ja/nej
         }
         return 0;
     }
