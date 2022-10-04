@@ -26,7 +26,7 @@ public abstract class Krukväxt {
         return höjdiMeter;
     }
 
-    public void setLängd(double höjdiMeter) { // inkapsling - När plantan växer
+    public void setLängd (double höjdiMeter) { // inkapsling - När plantan växer
         this.höjdiMeter = höjdiMeter;
     }
 
