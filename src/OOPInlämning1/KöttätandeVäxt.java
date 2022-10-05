@@ -4,7 +4,7 @@ import javax.swing.*;
 public class KöttätandeVäxt extends Krukväxt implements Printer {
 
     private final Vätsketyp vätsketyp = Vätsketyp.PROTEINDRYCK;
-    private final double vätskeMängd = getLängd()*0.2+0.1;
+    private double vätskeMängd = getLängd()*0.2+0.1;
 
     public KöttätandeVäxt (String namn, double höjdiMeter) {
         super (namn, höjdiMeter);
@@ -26,8 +26,8 @@ public class KöttätandeVäxt extends Krukväxt implements Printer {
         return getNamn() + (" behöver ")+ getVätskeMängd() + " liter " + getvätskeTyp().vätska+(" per dag.");
     }
     @Override
-    public void printMe() {
-        JOptionPane.showMessageDialog(null,"Namn: " + getNamn() +"Höjd: "
-                +getLängd()+"Växttyp: "+getClass().getName());
+    public String printMe() {
+        return "Namn: " + getNamn() +" Höjd: "
+                +getLängd()+" m"+" Växttyp: " + this.getClass().getSimpleName();
     }
 }

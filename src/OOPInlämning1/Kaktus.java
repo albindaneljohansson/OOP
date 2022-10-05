@@ -26,8 +26,8 @@ public class Kaktus extends Krukväxt implements Printer {
         return getNamn() + (" behöver ")+ getVätskeMängd() + " liter " + getvätskeTyp().vätska+(" per dag.");
     }
     @Override
-    public void printMe() {
-        JOptionPane.showMessageDialog(null,"Namn: " + getNamn() +"Höjd: "
-                +getLängd()+"Växttyp: "+getClass().getName());
+    public String printMe() {
+        return"Namn: " + getNamn() +" Höjd: "
+                +getLängd()+" m"+" Växttyp: " + this.getClass().getSimpleName();
     }
 }

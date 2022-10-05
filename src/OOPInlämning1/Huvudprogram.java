@@ -27,6 +27,7 @@ public class Huvudprogram {
             }
             i = printServering(allaVäxter, VäxtSomSkaHaVätska);
         }
+
     }
     public int printServering (List<Krukväxt> allaVäxter, String VäxtSomSkaHaVätska) {
         for (Krukväxt k : allaVäxter) {                                          //Kollar om växten finns i listan

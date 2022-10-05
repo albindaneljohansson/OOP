@@ -30,5 +30,8 @@ public abstract class Krukväxt {
         this.höjdiMeter = höjdiMeter;
     }
 
-    public abstract String Servering(); // Polymorfism
+     public abstract String Servering();  // Polymorfism
+
+
+
 }

@@ -4,7 +4,7 @@ import javax.swing.*;
 public class Palm extends Krukväxt implements Printer {
 
     private final Vätsketyp vätsketyp = Vätsketyp.KRANVATTEN;
-    private final double vätskeMängd = getLängd()*0.5;
+    private double vätskeMängd = getLängd()*0.5;
 
     public Palm (String namn, double höjdiMeter) {
         super (namn, höjdiMeter);
@@ -26,8 +26,8 @@ public class Palm extends Krukväxt implements Printer {
     }
 
     @Override
-    public void printMe() {
-        JOptionPane.showMessageDialog(null,"Namn: " + getNamn() +"Höjd: "
-                +getLängd()+"Växttyp: "+getClass().getName());
+    public String printMe() {
+        return "Namn: " + getNamn() +" Höjd: "
+                +getLängd()+" m"+ " Växttyp: "+ this.getClass().getSimpleName();
     }
 }
