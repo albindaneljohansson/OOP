@@ -1,7 +1,7 @@
 package OOPInlämning1;
 import javax.swing.*;
 
-public class Palm extends Krukväxt implements Printer {
+public class Palm extends Krukväxt implements Printable {
 
     private final Vätsketyp vätsketyp = Vätsketyp.KRANVATTEN;
     private double vätskeMängd = getLängd()*0.5;

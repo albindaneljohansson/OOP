@@ -1,7 +1,7 @@
 package OOPInlämning1;
 import javax.swing.*;
 
-public class KöttätandeVäxt extends Krukväxt implements Printer {
+public class KöttätandeVäxt extends Krukväxt implements Printable {
 
     private final Vätsketyp vätsketyp = Vätsketyp.PROTEINDRYCK;
     private double vätskeMängd = getLängd()*0.2+0.1;
