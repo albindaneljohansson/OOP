@@ -6,11 +6,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PalmTest {
     Palm p = new Palm("Laura", 5);
+    Palm p2 = new Palm("Lisa", 5);
     @Test
     void getNamn() {
         assert (p.getNamn().equals("Laura"));
         assert (!p.getNamn().equals("Lisa"));
+        p2.setNamn("Stina");
+        assert (p2.getNamn().equals("Stina"));
+        assert (!p2.getNamn().equals("Lisa"));
     }
+
+
 
     @Test
     void getVätskeMängd() {
@@ -23,6 +29,9 @@ class PalmTest {
         assert (p.getvätskeTyp().equals(Vätsketyp.KRANVATTEN));
         assert (!p.getvätskeTyp().equals(Vätsketyp.MINERALVATTEN));
     }
+
+
+
 
     @Test
     void servering() {
