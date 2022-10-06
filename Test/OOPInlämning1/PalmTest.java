@@ -12,9 +12,25 @@ class PalmTest {
     void getNamn() {
         assert (p.getNamn().equals("Laura"));
         assert (!p.getNamn().equals("Lisa"));
+    }
+    @Test
+    void setNamn() {
         p2.setNamn("Stina");
         assert (p2.getNamn().equals("Stina"));
         assert (!p2.getNamn().equals("Lisa"));
+    }
+
+    @Test
+    void getLängd() {
+        assert (p.getLängd() == 5);
+        assert (p.getLängd() != 4);
+    }
+
+    @Test
+    void setLängd() {
+        p2.setLängd(3);
+        assert (p2.getLängd() == 3);
+        assert (p2.getLängd() != 2);
     }
 
     @Test
