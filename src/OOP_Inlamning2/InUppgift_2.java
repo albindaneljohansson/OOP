@@ -27,10 +27,6 @@ public class InUppgift_2 {
     public void mainProgram() {
         System.out.println("Vem ska träna? Ange fullständigt namn eller personnummer:");
         String customer = sc.nextLine().trim();
-        while (customer.length() < 10) {
-        System.out.println("Felaktig inmatning. Ange fullständigt namn eller personnummer:");
-        customer = sc.nextLine().trim();
-        }
         if (getSubscriptionStatus(customer, customerFilePath, null)) {
             addToWorkOutLog(getTempPerson(), null, null);
             System.out.println("Kunden är medlem. Vill du se kundens träningslog? Ja/Nej");
@@ -61,7 +57,7 @@ public class InUppgift_2 {
             Scanner scan = new Scanner(filePath);
             while (scan.hasNextLine()) {
                 fileLine = scan.nextLine();
-                if (fileLine.contains(personIdentifier)) {
+                if (fileLine.toLowerCase().contains(personIdentifier.toLowerCase())) {
                     if (!test) {
                         if (getTimeOfSubscription(scan.nextLine(), null)) {
                             setTempPerson(fileLine);
