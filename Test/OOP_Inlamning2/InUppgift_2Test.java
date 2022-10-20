@@ -2,8 +2,6 @@ package OOP_Inlamning2;
 
 import org.junit.jupiter.api.Test;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -37,12 +35,17 @@ class InUppgift_2Test {
     }
 
     @Test
-    void addToWorkOutLog() throws FileNotFoundException {
+    void addToWorkOutLog()  {
         String person = "7703021234, Alhambra Aromes";
         IN2.addToWorkOutLog(person,"2022-10-22", "13.30");
         File testFile = new File("Test/OOP_Inlamning2/7703021234, Alhambra Aromes_Test.txt");
+        try {
             Scanner sc = new Scanner(testFile);
             String testLine = sc.nextLine();
             assert (testLine.equals("Datum: 2022-10-22\tTid: 13.30"));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
