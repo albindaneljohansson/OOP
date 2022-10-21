@@ -114,13 +114,7 @@ public class InUppgift_2 {
                 System.out.println(temp);
             }
         }
-        catch (FileNotFoundException e) {
-            System.out.println("Filen kunde ej hittas");
-            e.printStackTrace();
-            System.exit(0);
-        }
         catch (IOException e) {
-            System.out.println("Felaktig IO-data");
             e.printStackTrace();
             System.exit(0);
         }
@@ -142,7 +136,6 @@ public class InUppgift_2 {
                             + timeNow + "\n");                                              
                 }
                 catch (IOException e) {
-                    System.out.println("Felaktig IO-data");
                     e.printStackTrace();
                     System.exit(0);
                 }
@@ -154,7 +147,6 @@ public class InUppgift_2 {
                     }
 
                     catch (IOException e) {
-                        System.out.println("Felaktig IO-data");
                         e.printStackTrace();
                         System.exit(0);
                     }
