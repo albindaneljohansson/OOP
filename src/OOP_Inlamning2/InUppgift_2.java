@@ -54,9 +54,7 @@ public class InUppgift_2 {
     // Gör ej tidskontrollen, skickar den vidare till getTimeOfSubscription
     public boolean getSubscriptionStatus(String personIdentifier, Path filePath, LocalDate testDate) {
         String fileLine;
-
         try (Scanner scan = new Scanner(filePath)) {
-
             while (scan.hasNextLine()) {
                 fileLine = scan.nextLine();
                 if (fileLine.toLowerCase().contains(personIdentifier.toLowerCase())) {
@@ -81,12 +79,6 @@ public class InUppgift_2 {
             System.exit(0);
         }
         catch (IOException e) {
-            System.out.println("Felaktig IO-data");
-            e.printStackTrace();
-            System.exit(0);
-        }
-        catch (Exception e) {
-            System.out.println("Ospecificerat fel inträffade");
             e.printStackTrace();
             System.exit(0);
         }
