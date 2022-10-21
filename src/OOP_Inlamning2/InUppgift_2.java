@@ -23,7 +23,7 @@ public class InUppgift_2 {
     public InUppgift_2(boolean test) {
         this.test = test;
     }
-
+       // Mainprogram - för user input och metodanrop
     public void mainProgram() {
         System.out.println("Vem ska träna? Ange fullständigt namn eller personnummer:");
         String customer = sc.nextLine().trim();
@@ -50,11 +50,13 @@ public class InUppgift_2 {
     }
 
     // Metoden returnerar booelan på om årsavgiften betalades för
-    // mindre än ett år sedan för de personer som ligger på en fil man skickar in
+    // mindre än ett år sedan för de personer som ligger på den aktuella filen  man skickar in
+    // Gör ej tidskontrollen, skickar den vidare till getTimeOfSubscription
     public boolean getSubscriptionStatus(String personIdentifier, Path filePath, LocalDate testDate) {
         String fileLine;
-        try {
-            Scanner scan = new Scanner(filePath);
+
+        try (Scanner scan = new Scanner(filePath)) {
+
             while (scan.hasNextLine()) {
                 fileLine = scan.nextLine();
                 if (fileLine.toLowerCase().contains(personIdentifier.toLowerCase())) {
@@ -105,8 +107,8 @@ public class InUppgift_2 {
     // Metoden skriver till konsol träningstillfällen för den person som skickas in
     public void printLogFile(String person) {
         String s = "src/OOP_Inlamning2/" + person + ".txt";
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(s));
+
+        try (BufferedReader br = new BufferedReader(new FileReader(s))){
             String temp;
             while ((temp = br.readLine()) != null) {
                 System.out.println(temp);
@@ -129,35 +131,33 @@ public class InUppgift_2 {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH.mm");
         String timeNow = LocalTime.now().format(dtf);
         String dateNow = LocalDate.now().toString();
-        PrintWriter printToFile;
         String path = "src/OOP_Inlamning2/" + person + ".txt";
         String testPath = "Test/OOP_Inlamning2/" + person + "_Test.txt";
-        try {
+
             if (test) {
-                printToFile = new PrintWriter(new FileWriter(testPath));
-                timeNow = testTime;
-                dateNow = testDate;
-            } else {
-                printToFile = new PrintWriter(new FileWriter(path, true));
+                try (PrintWriter printToFile = new PrintWriter(new FileWriter(testPath))){
+                    timeNow = testTime;
+                    dateNow = testDate;
+                    printToFile.write("Datum: " + dateNow + "\tTid: "
+                            + timeNow + "\n");                                              
+                }
+                catch (IOException e) {
+                    System.out.println("Felaktig IO-data");
+                    e.printStackTrace();
+                    System.exit(0);
+                }
             }
-            printToFile.write("Datum: " + dateNow + "\tTid: "
-                    + timeNow + "\n");
-            printToFile.close();
-        }
-        catch (FileNotFoundException e) {
-            System.out.println("Filen kunde ej hittas");
-            e.printStackTrace();
-            System.exit(0);
-        }
-        catch (IOException e) {
-            System.out.println("Felaktig IO-data");
-            e.printStackTrace();
-            System.exit(0);
-        }
-        catch (Exception e) {
-            System.out.println("Ospecificerat fel inträffade");
-            e.printStackTrace();
-            System.exit(0);
-        }
+                else {
+                    try (PrintWriter printToFile = new PrintWriter(new FileWriter(path,true))){
+                      printToFile.write("Datum: " + dateNow + "\tTid: "
+                              + timeNow + "\n");
+                    }
+
+                    catch (IOException e) {
+                        System.out.println("Felaktig IO-data");
+                        e.printStackTrace();
+                        System.exit(0);
+                    }
+                }
     }
 }
